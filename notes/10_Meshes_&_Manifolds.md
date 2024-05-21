@@ -93,3 +93,8 @@ Conclusion: pick the right data structure for the job!
 **Local operations**
 
 ![1544759964608](assets/1544759964608.jpg)
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

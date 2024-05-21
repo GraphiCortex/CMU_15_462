@@ -159,3 +159,8 @@ $$
 5. Compute required texels in window of flter
 6. Load required texels (need eight texels for trilinear)
 7. Perform tri-linear interpolation according to (U, V, d) 
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

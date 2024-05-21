@@ -208,3 +208,8 @@ Complicated task! Lots of standards & software
 3. Electron beam voltage converted to light: $L=cV^\gamma, \gamma\approx2.5$ (non-linear relationship) 
 
 > (Doesn’t apply to modern LCD displays, whose luminance output is linearly proportional to input; DOES still apply to other devices, like sensors, etc.) 
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

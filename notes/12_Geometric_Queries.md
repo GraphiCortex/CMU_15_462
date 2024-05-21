@@ -220,3 +220,8 @@ Basic idea:
 - One way: reduce to edge-triangle intersection
 - Check if each line passes through plane
 - Then do interval test 
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

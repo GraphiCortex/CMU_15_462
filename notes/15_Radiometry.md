@@ -276,3 +276,8 @@ $$
 ![1544873510092](assets/1544873510092.jpg)
 
 ![1544873938799](assets/1544873938799.jpg)
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

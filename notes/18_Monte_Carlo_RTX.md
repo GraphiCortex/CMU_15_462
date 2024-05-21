@@ -175,3 +175,7 @@ Instead, ==randomly discard low-contribution samples== in a way that leaves esti
 
 ![1544901700511](assets/1544901700511.jpg)
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

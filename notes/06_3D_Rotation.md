@@ -158,3 +158,8 @@ $$
 >
 >- 当$\mathbf{p}$与$\mathbf{q}$夹角$\theta$大于90°时，$\cos \theta=\frac{\mathbf{p}\cdot\mathbf{q}}{|\mathbf{p}||\mathbf{q}|}<0$，则$\mathbf{p}\cdot\mathbf{q}<0$，此时插值会在4D球面上绕远路，此时可以将任一向量取反（不改变它代表的朝向）
 >- 当$\theta$很小时，$\sin \theta\to0$，此时可以用简单的线性插值$\mathbf{r}(t)=(1-t)\mathbf{p}+t\mathbf{q}$，因为此时$\sin \theta\to\theta$
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

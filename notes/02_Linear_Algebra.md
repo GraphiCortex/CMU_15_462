@@ -13,7 +13,7 @@ A norm is any function that assigns a number to each vector and satisfies the fo
 - Scale: $|a\mathbf{u}|=|a||\mathbf{u}|$
 - Triangle: $|\mathbf{u}|+|\mathbf{v}|\ge|\mathbf{u}+\mathbf{v}|$
 
-常见的模(norm)
+Common Models(norm)
 
 - Euclidean norm: $|\mathbf{u}|:=|(u_1,...,u_n)|=\sqrt{\sum_{i=1}^{n}u_i^2}$
 - $L^2$ norm: $||f||:=\sqrt{\int_0^1{{f(x)}^2dx}}$
@@ -28,7 +28,7 @@ An inner product is any function that assigns to any two vectors u,v a number <u
 
 - Symmetry: $<\mathbf{u},\mathbf{v}>=<\mathbf{v},\mathbf{u}>$
 
-- Projection: For unit vectors $|\mathbf{u}|=|\mathbf{v}|=1$, an inner product measures the extent(长度) of one vector along the direction of the other.
+- Projection: For unit vectors $|\mathbf{u}|=|\mathbf{v}|=1$, an inner product measures the extent of one vector along the direction of the other.
 
   ![1544098465431](assets/1544098465431.jpg)
 
@@ -40,7 +40,7 @@ An inner product is any function that assigns to any two vectors u,v a number <u
 
 - $ \langle\mathbf{u}+\mathbf{v},\mathbf{w}\rangle = \langle\mathbf{u},\mathbf{w}\rangle+\langle\mathbf{v},\mathbf{w}\rangle$
 
-常见的内积
+Inner Products
 
 - Euclidean inner product: $\langle\mathbf{u},\mathbf{v}\rangle=\langle(u_1,...,u_n),(v_1,...,v_n)\rangle:=\sum_{i=1}^nu_iv_i$
 - $L^2$ Inner Product of Functions: $\langle{f,g}\rangle:=\int_0^1{f(x)g(x)dx}$
@@ -171,3 +171,8 @@ original quadratic form:
 $$
 B(\mathbf{x},\mathbf{x})=Q(\mathbf{x})
 $$
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

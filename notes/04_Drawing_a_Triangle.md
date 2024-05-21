@@ -87,3 +87,8 @@ infnite extent of “ideal” reconstruction flter (sinc) is impractical for eff
 - Modern approach: tiled triangle traversal 
 
   ![1544362277211](assets/1544362277211.jpg)
+  
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

@@ -151,3 +151,7 @@ If the region we care about covers only a very small fraction of the region weâ€
 
 ![1544890047589](assets/1544890047589.jpg)
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

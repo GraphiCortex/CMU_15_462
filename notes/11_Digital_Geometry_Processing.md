@@ -228,3 +228,8 @@ Repeat four steps:
 - Center vertices tangentially 
 
   > We can make the algorithm slightly more stable by moving *gently* toward the centroid, rather than immediately snapping the vertex to the center.
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>

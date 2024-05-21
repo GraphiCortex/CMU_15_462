@@ -233,3 +233,7 @@ Using Hessian, can now write 2nd-order approximation of any smooth, multivariabl
 
  ![1544191580396](assets/1544191580396.jpg)
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>
