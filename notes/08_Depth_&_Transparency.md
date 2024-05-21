@@ -37,7 +37,7 @@ A over B != B over A
 $$
 "Over" is not commutative
 
-> 最简单的例子：不透明物体在透明物体前与后是完全不同的
+> The simplest example: opaque objects are completely different before and after transparent objects
 
 **non-premultiplied alpha**
 $$
@@ -80,11 +80,11 @@ if we instead use the premultiplied "over" operation, we get the correct alpha
 >
 > filtered (color,alpha)= (0.5, 0.5, 0, 0.5)，rst color over white = (0.75, 0.75, 0.5)，多了红色
 >
-> 本来应该不产生影响（因为$\alpha=0$ ）的红底色在滤波的时候跟绿色混合了
+> The red background color that should have no impact (because $\alpha=0$) is mixed with green during filtering
 >
 > **Premultiplied**
 >
-> filtered (color,alpha)= (0, 0.5, 0, 0.5)，rst color over white = (0.5, 0.75, 0.5)，正常
+> filtered (color,alpha)= (0, 0.5, 0, 0.5)，rst color over white = (0.5, 0.75, 0.5)，normal
 
 - Applying “over” repeatedly 
 
@@ -97,9 +97,9 @@ C&=\alpha_B B+(1-\alpha_B)\alpha_A A\\
 \alpha_C&=\alpha_B+(1-\alpha_B)\alpha_A
 \end{aligned}
 $$
-考虑A和B为透明度0.5的红色，则 C=[0.75,0,0], $\alpha_C=0.75$ ，C 变成了 premultiplied alpha，即说明 Non-premultiplied alpha is not closed
+Consider that A and B are red with a transparency of 0.5, then C=[0.75,0,0], $\alpha_C=0.75$ , C becomes premultiplied alpha, which means Non-premultiplied alpha is not closed
 
-> 正确的C的计算如下
+> The correct calculation of C is as follows
 >
 > $A'=(0.5,0,0)$
 >

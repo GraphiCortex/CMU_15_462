@@ -29,11 +29,11 @@
 
 >  [Wikipedia](https://en.wikipedia.org/wiki/Catmull-Clark_subdivision_surface) 
 >
-> R 是对 edge 的 原中心 进行计算
+> R is to calculate the original center of edge
 
 
 
-> 适用于四边形网格，在三角网格上效果不好
+> Suitable for quadrilateral meshes, not effective on triangular meshes
 >
 > ![1544789663802](assets/1544789663802.jpg)
 >
@@ -53,7 +53,7 @@
 
     ![1544789965349](assets/1544789965349.jpg)
 
-    > 先进行原顶点的更新（右图），在进行新顶点的更新（左图）
+    > The original vertices are updated first (right picture), and then the new vertices are updated (left picture)
 
 - 4-1 subdivision
 
@@ -112,7 +112,7 @@ How much does it cost to collapse an edge?
 
 Idea: compute ==edge midpoint==, measure ==quadric error==
 
-> 这里的 quadric error 是 new point 到 edge 两端点所有的邻接三角形的所在平面的二次距离和，即
+> The quadric error here is the sum of the quadratic distances from the new point to the planes of all adjacent triangles at both end points of edge, that is
 > $$
 > Q_{P_{new}}=Q_{p_1}+Q_{p_2}=\sum_{s\in S(p_1)\cup S(p_2)}K_s\\
 > \text{error}=P_{new}^\text{T}Q_{P_{new}}P_{new}

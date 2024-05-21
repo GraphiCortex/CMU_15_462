@@ -53,7 +53,7 @@ so the closest point is $\mathbf{p}^*=\mathbf{p}+d(-\mathbf{n})=\mathbf{p}+(c-\m
 
 - project onto plane of triangle
 
-  > the closest point on triangle plane)
+  > the closest point on triangle plane
 
 - use half-space tests to classify point (vs. half plane)
 
@@ -160,15 +160,15 @@ $$
 > \end{bmatrix}\\
 > \end{aligned}
 > $$
-> 注意利用公共子表达式 $\mathbf{e_1}\times\mathbf{d}$ 和 $\mathbf{e_2}\times\mathbf{s}$ 
+> Pay attention to the use of public subexpressions $\mathbf{e_1}\times\mathbf{d}$ 和 $\mathbf{e_2}\times\mathbf{s}$ 
 
 **Ray AABB Intersection** 
 
-每一个维度都求出一个 $t_{min}$ 和 $t_{max}$
+Find one for each dimension $t_{min}$ 和 $t_{max}$
 
 ![1544845131881](assets/1544845131881.jpg)
 
-3个维度得到3个区间，公共区间不为空则说明相交
+Three intervals are obtained from 3 dimensions. If the common interval is not empty, it means intersection.
 
 **Ray-scene intersection**
 
@@ -208,7 +208,7 @@ Leads linear system
 >
 > $o_1+t_1d_1=o_2+t_2d_2$
 >
-> 在 xy 平面算出 $t_1, t_2$，然后代入 z 维检查是否相等
+> Calculate $t_1, t_2$ on the xy plane, and then substitute it into the z dimension to check whether they are equal.
 
 **Triangle-Triangle Intersection**
 

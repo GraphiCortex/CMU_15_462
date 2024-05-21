@@ -20,7 +20,7 @@ $$
 
 ![1544180556986](assets/1544180556986.jpg)
 
-- magnitude equal to parallelogram(平行四边形) area
+- magnitude equal to parallelogram area
 
 - direction orthogonal to both vectors
 
@@ -51,7 +51,7 @@ det(u,v,w) encodes (signed) volume of parallelpiped with edge vectors u, v, w.
 
 ![1544181585694](assets/1544181585694.jpg)
 
-> 叉乘项的两个向量在行列式中相邻且同顺序
+> The two vectors of the cross product term are adjacent in the determinant and in the same order.
 
 **Representing Linear Maps via Matrices**
 
@@ -97,7 +97,7 @@ Given a multivariable function $f(\mathbf{x})$ , gradient $\nabla f(\mathbf{x})$
 
  Most familiar defnition: list of partial derivatives
 $$
-\nabla f(\mathbf{x})=\begin{bmatrix} \partial f/\partial x_1\\...\\ \partial f/\partial x_n \end{bmatrix}
+\nabla f(\mathbf{x})=\begin{bmatrix} \partial f/\partial x_1\...\\ \partial f/\partial x_n \end{bmatrix}
 $$
 Two potential problems:
 

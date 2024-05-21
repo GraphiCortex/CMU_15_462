@@ -18,27 +18,27 @@ Summed up by the rendering equation (Kajiya):
 
 **Deep in the Rendering Equation** 
 
-将 $\cos\theta​$ 改写成点积的形式，
+Rewrite $\cos\theta​$ into dot product form，
 $$
 L_o(\mathbf{p},\omega_o)=L_e(\mathbf{p},\omega_o) + \int_{\mathcal{H}^2}f_r(\mathbf{p},\omega_i\to\omega_o)L_i(\mathbf{p},\omega_i)(\omega_i\cdot\mathbf{n}(\mathbf{p})) \ \text{d}\omega_i
 $$
-我们考虑 $L_i(\mathbf{p},\omega_i)​$，其为
+We consider $L_i(\mathbf{p},\omega_i)​$，it's for
 $$
 L_i(\mathbf{p},\omega_i)=L_o(\text{RTX}(\mathbf{p},\omega_i),-\omega_i)
 $$
-所以渲染方程为
+So the rendering equation is
 $$
 L_o(\mathbf{p},\omega_o)=L_e(\mathbf{p},\omega_o) + \int_{\mathcal{H}^2}L_o(\text{RTX}(\mathbf{p},\omega_i),-\omega_i)f_r(\mathbf{p},\omega_i\to\omega_o)(\omega_i\cdot\mathbf{n}(\mathbf{p})) \ \text{d}\omega_i\\
 $$
-记 $L_o(\mathbf{p},\omega_o)​$ 为 $f(u)​$，$L_e(\mathbf{p},\omega_o)​$ 为 $e(u)​$，$L_o(RTX(\mathbf{p},\omega_i),-\omega_i)​$ 为 $f(v)​$，积分算子记为 $K(u,v)​$。
+Denote $L_o(\mathbf{p},\omega_o)​$ as $f(u)​$, $L_e(\mathbf{p},\omega_o)​$ as $e(u)​$, $L_o( RTX(\mathbf{p},\omega_i),-\omega_i)​$ is $f(v)​$, and the integral operator is recorded as $K(u,v)​$.
 
-则渲染方程简化为
+Then the rendering equation is simplified to
 $$
 f(u)=e(u)+\int K(u,v)f(v)\ \text{d}v
 $$
-这是第二类弗雷德霍姆积分方程，无法求解，只能近似。
+This is the Fredholm integral equation of the second kind, which cannot be solved but can only be approximated.
 
-将方程展开
+expand the equation
 $$
 \begin{aligned}
 L&=E+KL\\
@@ -47,11 +47,11 @@ L&=(I-K)^{-1}E\\
 L&=E+KE+K^2E+...\\
 \end{aligned}
 $$
-即
+Right now
 $$
 f(u)=e(u)+\int K(u,v)e(v)dv+\int K(u,v)dv\int K(v,w)e(w)dw+...
 $$
-以上的解释中符号之间对应关系自行确认，重点是理解到该渲染方程的特性，以及求解方法。
+The correspondence between the symbols in the above explanation is self-confirmed. The key point is to understand the characteristics of the rendering equation and the solution method.
 
 **Recursive Raytracing** 
 
@@ -148,9 +148,9 @@ More blurring, plus coloration (nonuniform absorption across frequencies)
   \int_{\mathcal{H}^2}f_r(\omega_i\to\omega_o)\cos\theta\ \text{d}\omega_i\le1
   $$
 
-  >BRDF需要处理表面上半球的各个方向，使用球坐标系定义方向更加方便
+  >BRDF needs to handle all directions of the hemisphere on the surface, and it is more convenient to use the spherical coordinate system to define the direction.
   >
-  >所以BRDF也可以表示成 $f_r(\theta_i,\phi_i;\theta_o,\phi_o)$
+  >So BRDF can also be expressed as $f_r(\theta_i,\phi_i;\theta_o,\phi_o)$
   >
   >---
   >
@@ -159,25 +159,26 @@ More blurring, plus coloration (nonuniform absorption across frequencies)
   >f_r=k_df_\text{lambert}+k_sf_\text{cook-torrance}\\
   >f_\text{cook-torrance}=\frac{DFG}{4(\omega_0\cdot\mathbf{n})(\omega_i\cdot\mathbf{n})}
   >$$
-  >$k_s$ 是 镜面反射 部分，$k_d=1-k_s​$ 是 折射/漫反射 部分
+  >$k_s$ is the specular reflection part, $k_d=1-k_s​$ is the refraction/diffuse reflection part
   >
-  >$f_\text{lambertian}​$ 是下边提到的漫反射BRDF
+  >$f_\text{lambertian}​$ is the diffuse reflection BRDF mentioned below
   >
-  >$f_\text{cook-torrance}​$ 是 镜面反射 BRDF
+  >$f_\text{cook-torrance}​$ is specular reflection BRDF
   >
-  >D, F, G 三个函数分别为正态分布函数(Normal**D**istribution Function)，菲涅尔方程(**F**resnel Rquation)和几何函数(**G**eometry Function)。
+  >D, F, G are the three functions of normal distribution function (Normal**D**istribution Function), Fresnel equation (**F**resnel Rquation) and geometric function (**G**eometry Function). ).
   >
-  >F统一都用 schlick 公式，D和G不同的组合形成不同的BRDF
+  >F is unified using the schlick formula, and different combinations of D and G form different BRDFs.
   >
-  >- **正态分布函数**：估算在受到表面粗糙度的影响下，取向方向与**中间向量**一致的微平面的数量。这是用来估算微平面的主要函数。
+  >- **Normal Distribution Function**: Estimates the number of microfacets whose orientation is consistent with the **intermediate vector** due to the influence of surface roughness. This is the main function used to estimate microfacets.
   >$$
   >NDF_{GGXTR}(\mathbf{n},\mathbf{h},\alpha)=\frac{\alpha^2}{\pi((\mathbf{n}\cdot\mathbf{h})^2(\alpha^2-1)+1)^2}
   >$$
-  >在这里$\mathbf{h}$表示用来与平面上的微平面做比较用的中间向量，而$\alpha$表示表面粗糙度，粗糙度为 0-1，如下展示了不同粗糙度下的效果。
+  >Here $\mathbf{h}$ represents the intermediate vector used for comparison with the microfacets on the plane, and $\alpha$ represents the surface roughness, with a roughness of 0-1. The following shows the Effect.
   >
   >![img](assets/ndf.jpg)
   >
-  >- **几何函数**：描述了微平面自成阴影的属性。当一个平面相对比较粗糙的时候，平面表面上的微平面有可能挡住其他的微平面从而减少表面所反射的光线。
+  >- 
+  **Geometry Function**: Describes the properties of the microplane's self-shadowing. When a plane is relatively rough, the microfacets on the surface may block other microfacets and reduce the amount of light reflected by the surface.
   >
   >![img](assets/geometry_shadowing.jpg)
   >$$
@@ -186,15 +187,15 @@ More blurring, plus coloration (nonuniform absorption across frequencies)
   >$$
   >![img](assets/geometry-1544885007310.jpg)
   >
-  >- **菲涅尔方程**：菲涅尔方程描述的是在不同的表面角下表面所反射的光线所占的比率。
+  >- **Fresnel equation**: The Fresnel equation describes the ratio of light reflected by the surface at different surface angles.
   >$$
   >F_{Schlick}(\mathbf{h},\mathbf{v},F_0)=F_0+(1−F_0)(1−(\mathbf{h}⋅\mathbf{v}))^5
   >$$
-  >$F_0$ 表示平面的基础反射率，它是利用所谓折射指数(Indices of Refraction)或者说IOR计算得出的
+  >$F_0$ represents the basic reflectivity of the plane, which is calculated using the so-called Index of Refraction (Indices of Refraction) or IOR.
   >$$
   >F_0=(\frac{n_t-1}{n_t+1})^2
   >$$
-  >根据 wiki 上写的，这里的两个向量应该是光线方向和法向。但对于镜面反射，法向即为半程向量，光线方向与法向的点积就是视线方向的点积。
+  >According to what is written on wiki, the two vectors here should be the light direction and the normal direction. But for specular reflection, the normal direction is the half-range vector, and the dot product of the light direction and the normal direction is the dot product of the line of sight direction.
   >
   >![img](assets/fresnel.jpg)
 
@@ -256,7 +257,7 @@ $$
 
   In practice, no hope of finding refected direction via random sampling; simply pick the refected direction! 
 
-  > 注意分母
+  > Attention Denominator 
 
 **Transmission**
 

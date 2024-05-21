@@ -43,14 +43,12 @@ For polygonal surfaces just two easy conditions to check:
 >
 > A polygon soup is a group of ==unorganized== triangles, with generally no relationship whatsoever. Polygon soups are a geometry storage format in a 3D modeling package, such as Maya, Houdini, or Blender. Polygon soup can help save memory, load/write time, and disk space for large polygon meshes compared to the equivalent polygon mesh.
 >
-> Soup is 국. In a soup, the ingredients are mixed together and are unorganized. Think of 순두부찌개. The idea is that many things are put together in an unordered or unorganized way. 
 
 **Incidence Matrices**
 
 Can encode all neighbor information via incidence matrices 
 
-> example
->
+> Example:
 > ![1544759730395](assets/1544759730395.jpg)
 
 **Halfedge Data Structure**

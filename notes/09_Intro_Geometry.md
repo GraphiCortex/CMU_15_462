@@ -29,7 +29,7 @@ Each choice best suited to a different task/type of geometry
 
 Surface is zero set of a polynomial in x, y, z (“algebraic variety”) 
 
-> 喵喵喵? zero set?
+> zero set?
 
 ![1544712735907](assets/1544712735907.jpg)
 

@@ -126,18 +126,17 @@ Color model is the way a particular color in a color space is specifed
 
 - HSV
 
-  - hue(色调), saturation(饱和度), value(明度) 
-
+  - hue, saturation, value
     ![1544860867784](assets/1544860867784.jpg)
 
   - more intuitive than RGB/CMYK 
 
-- SML—physiological(生理学的) model
+- SML—physiological model
 
   - corresponds to stimulus of cones 
   - not practical for most color work 
 
-- XYZ—preceptually(感知的)-driven model 
+- XYZ—preceptually driven model 
 
   - Y captures luminance (intensity) 
   - X,Z capture chromaticity (color) 
@@ -197,7 +196,7 @@ Even matching perception of color would be terrifc (metamers)
 
 In reality: may not always be possible!
 
-> Depends on the gamut(色域) of the output device 
+> Depends on the gamut of the output device 
 
 Complicated task! Lots of standards & software 
 

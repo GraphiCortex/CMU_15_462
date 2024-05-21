@@ -149,9 +149,9 @@ A good partitioning minimizes the cost of finding the closest intersection of a 
 
   - SAH changes only when split plane moves past triangle boundary
 
-    > ?? 我觉得应该是经过三角形中心时变化，因为 S 应该是包围盒面积
+    > ?? I think it should change when passing through the center of the triangle, because S should be the area of ​​the bounding box
     >
-    > 包围盒面积由其内三角形确定，三角形是否在内部由其中心决定
+    > The area of ​​the bounding box is determined by its inner triangle. Whether the triangle is inside or not is determined by its center.
 
   - Have to consider rather large number of possible split planes… 
 
@@ -255,7 +255,7 @@ Choose the right structure for the job!
 
       > Traverse space in order (first intersection is closest intersection), may intersect primitive multiple times
 - Adaptive structures (BVH, K-D tree)
-    - More costly to construct (must be able to amortize(摊销) cost over many geometric queries)
+    - More costly to construct (must be able to amortize cost over many geometric queries)
     - Better intersection performance under non-uniform distribution of primitives
 - Non-adaptive accelerations structures (uniform grids)
     - Simple, cheap to construct

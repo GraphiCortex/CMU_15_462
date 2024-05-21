@@ -25,87 +25,87 @@ Only requires function to be evaluated at random points on its domain
 >
 > > https://en.wikipedia.org/wiki/Monte_Carlo_integration
 >
-> 蒙特卡洛积分问题就是计算多维定积分
+> The Monte Carlo integration problem is to calculate multi-dimensional definite integrals
 > $$
 > I=\int_\Omega f(\overline{x})\ \text{d}\overline{x}
 > $$
-> 其中 $\Omega$ 是 $R^m$ 的子集，有体积
+> in $\Omega$ is a subset of $R^m$ and has volume
 > $$
 > V=\int_\Omega \text{d}\overline{x}
 > $$
-> 最简单的 Monte Carlo 方法是在 Ω 中均匀采样，得到 N 个均匀的样本
+> The simplest Monte Carlo method is to sample uniformly in Ω to get N uniform samples
+> $$ 
+> \overline{x}_1, \overline{x}_2,...,\overline{x}_N\in\Omega 
 > $$
-> \overline{x}_1, \overline{x}_2,...,\overline{x}_N\in\Omega
-> $$
-> $I$ 估计为
+> $I$ estimated to be
 > $$
 > I\approx Q_N=V\frac{1}{N}\sum_{i=1}^Nf(\overline{x}_i)=V\langle f\rangle
 > $$
-> 大数定律保证了
+> The law of large numbers ensures
 > $$
 > \lim\limits_{N\to\infty}Q_N=I
 > $$
-> 考虑 $Q_N$，利用无偏估计可以通过样本方差来估计 $Q_N$ 的误差条(error bar)
+> Considering $Q_N$, the error bar of $Q_N$ can be estimated through the sample variance using unbiased estimator
 > $$
 > Var(f)=\sigma^2_N=\frac{1}{N-1}\sum_{i=1}^N(f(\overline x_i)-\langle f\rangle)^2
 > $$
-> 因此
+> Therefore
 > $$
 > Var(Q_N)=\frac{V^2}{N^2}Var(\sum_{i=1}^Nf(\overline x_i))=\mathbf{V^2}\frac{\sigma^2_N}{N}
 > $$
-> 只要 $\{\sigma^2_1,\sigma^2_2,...\}$ 是有界的，则方差以$\frac{1}{N}$ 的速度减小，不依赖于积分的维度
+> As long as $\{\sigma^2_1,\sigma^2_2,...\}$ is bounded, the variance decreases at the rate of $\frac{1}{N}$, independent of the dimension of the integral
 >
-> 需要注意的是，与确定性方法不同，误差的估计不是严格的误差界限;随机抽样可能无法发现被积函数的所有重要特征，而这些特征可能导致对误差的低估。
+> It is important to note that unlike deterministic methods, the estimate of error is not a strict error bound; random sampling may not discover all important features of the integrand, and these features may lead to an underestimation of the error.
 >
-> 另外可以使用非均匀分布的样本，一般用于重要性采样
+> In addition, non-uniformly distributed samples can be used, generally used for importance sampling
 >
 > > https://en.wikipedia.org/wiki/Importance_sampling
 >
-> 新的分布，最优就是
-> $$
+> The new distribution is optimal
+>$$
 > \frac{f(x)}{I}
-> $$
-> 此时一个样本就能达到方差为0，因为这种分布本身就包含了我们想求的积分 $I$，因此不会有误差
+>$$
+> At this time, one sample can achieve a variance of 0, because this distribution itself contains the integral $I$ we want to find, so there will be no error
 >
-> 但实际上我们要求的就是 I，所以无法直接获取最优的分布
+> But actually what we require is I, so we cannot directly obtain the optimal distribution
 
 **Importance Sampling** 
 
-> 这里有一个不错的博文 https://www.cnblogs.com/time-flow1024/p/10094293.html
+> Here is a good blog post: https://www.cnblogs.com/time-flow1024/p/10094293.html
 
-考虑随机变量
+Consider Random Variables
 $$
 Y=\frac{f(X)}{p(X)}
 $$
-其概率密度为 $p(X)$ ，则
+Its probability density is $p(X)$ ，but
 $$
 E[Y]=\int_{\Omega}\frac{f(x)}{p(x)}p(x)dx=I
 $$
-故可用 Y 的均值来估计 f(x) 的积分值
+Therefore, the mean value of Y can be used to estimate the integral value of f(x)
 $$
 I\approx Q_N=\frac{1}{N}\sum_{i=1}^N Y_i=\frac{1}{N}\sum_{i=1}^N \frac{f(x_i)}{p(x_i)}
 $$
-方差为
+The variance is
 $$
 \sigma^2[Q_N]=\frac{1}{N}\sigma^2[Y]=\frac{1}{N}\sigma^2[\frac{f(X)}{p(X)}]
 $$
-> 我们考虑下均匀采样用以验证
+> We consider uniform sampling to verify
 >
-> 此时 $p(X)=\frac{1}{V}$，则方差为 $\sigma^2[F_N]=\frac{V^2}{N}\sigma^2[f(X)] $ ，与之前的结论相同
+> At this time $p(X)=\frac{1}{V}$, then the variance is $\sigma^2[F_N]=\frac{V^2}{N}\sigma^2[f(X)] $ , the same conclusion as before
 
-那么，为了使得方差最小，$p^*(x) = f(x)/I$。
+Then, in order to minimize the variance, $p^*(x) = f(x)/I$.
 
-这个结论是无意义的，因为我们就是来求积分值的，而 $p^*(x)$ 包含了积分值
+This conclusion is meaningless, because we are here to find the integral value, and $p^*(x)$ contains the integral value
 
-但这也给了我们启发，需要尽量找与 f(x) 相近 的 p(x) 来进行重要性采样
+But this also gives us inspiration. We need to try to find p(x) that is close to f(x) for importance sampling.
 
 **generate samples of a discrete random variable (with a known PDF)** 
 
 To randomly select an event, select $x_i$ if $P_{i-1}<\xi\le P_i$
 
-$P$ 是累计概率函数 $P_j=\sum_{i=1}^j p_i$
+$P$ is the cumulative probability function $P_j=\sum_{i=1}^j p_i$
 
-$\xi$ 是均匀分布随机变量 $\in [0,1)$
+$\xi$ is a uniformly distributed random variable $\in [0,1)$
 
 ![1544886911993](assets/1544886911993.jpg)
 

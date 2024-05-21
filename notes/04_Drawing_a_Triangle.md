@@ -39,7 +39,7 @@ Key reason: once everything is reduced to triangles, can focus on making an ==ex
 
 **Sampaling for coverage**
 $$
-\text{coverage}(x,y)=\left\{
+\text{coverage}(x,y)=\left\
              \begin{array}{ll}
              1,&\text{if the triangle contains point(x,y)}\\
              0,&\text{otherwise}
@@ -76,7 +76,7 @@ infnite extent of “ideal” reconstruction flter (sinc) is impractical for eff
 
 - Point-in-triangle test
 
-  > 三条边的方程，像素点位置代入方程，根据正负判断与边的位置关系
+  > For the equation of three sides, the pixel position is substituted into the equation, and the positional relationship with the sides is judged based on the positive or negative.
 
   ![1544362408732](assets/1544362408732.jpg)
 

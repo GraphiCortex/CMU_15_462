@@ -8,21 +8,21 @@
 
 ![1544445825310](assets/1544445825310.jpg)
 
-右手系，开始时箭头指向z轴，绕x轴旋转 -90°
+Right-hand system, the arrow points to the z-axis at the beginning and rotates around the x-axis -90°
 
 ![1544445904281](assets/1544445904281.jpg)
 
-此时想让箭头指向 -x 轴，发现没法做到了（蓝环和绿环重合）
+At this time, I wanted the arrow to point to the -x axis, but found that I couldn't do it (the blue ring and the green ring overlapped)
 
-> 假装图片的箭头是圆锥+圆柱构成的
+> Pretend that the arrow in the picture is composed of a cone + cylinder
 
-只能先绕x轴旋转 -90°，再向y轴旋转 90°。同时旋转，得到如下轨迹（发生了偏移）
+It can only be rotated -90° around the x-axis and then 90° towards the y-axis. Rotate at the same time and get the following trajectory (offset has occurred)
 
 ![1544446098961](assets/1544446098961.jpg)
 
 **Imaginary Unit $i$**
 
-~~i=sqrt{-1}~~
+~~$$i=\sqrt{-1}$$~~
 
 ![1544446458827](assets/1544446458827.jpg)
 
@@ -75,7 +75,7 @@ Quaternion product determined by
 $$
 i^2=j^2=k^2=ijk=-1
 $$
->可推出 $ij=k,\ jk=i,\ ki=j$
+>Can be launched: $ij=k,\ jk=i,\ ki=j$
 
 together with “natural” rules (distributivity, associativity, etc.) 
 
@@ -112,17 +112,17 @@ $$
 
 > $q=(a,\mathbf{v})=(a,(b,c,d))=a+bi+cj+dk$
 >
-> 定义 $\langle{q,p}\rangle=a_1a_2+b_1b_2+c_1c_2+d_1d_2$
+> Definition: $\langle{q,p}\rangle=a_1a_2+b_1b_2+c_1c_2+d_1d_2$
 >
-> 则
+> But
 >
 > - $|q|^2=\langle{q,q}\rangle=a^2+b^2+c^2+d^2,\ |qp|=|q||p|$
 >
 > - $\cos\theta=\frac{\langle{q,p}\rangle}{|q||p|}$
 >
-> 定义 $\overline{q}=(a,-\mathbf{v})$, 则 $q\overline{q}=|q|^2$
+> Definition: $\overline{q}=(a,-\mathbf{v})$, 则 $q\overline{q}=|q|^2$
 >
-> 定义 $q^{-1}=\overline{q}/|q|^2$，则 $qq^{-1} = 1,\ (qp)^{-1}=p^{-1}q^{-1}$
+> Definition: $q^{-1}=\overline{q}/|q|^2$，则 $qq^{-1} = 1,\ (qp)^{-1}=p^{-1}q^{-1}$
 
 Given axis u, angle θ, quaternion q representing rotation is  
 $$
@@ -137,7 +137,7 @@ $$
 
 **Interpolating Rotations**
 
-4D球面线性插值
+4D spherical linear interpolation
 $$
 \text{Slerp}(q_0,q_1,t)=q_0(q_0^{-1}q_1)^t,t\in[0,1]
 $$
@@ -154,10 +154,10 @@ $$
 >\end{aligned}
 >$$
 >
->**细节**
+>**Detail**
 >
->- 当$\mathbf{p}$与$\mathbf{q}$夹角$\theta$大于90°时，$\cos \theta=\frac{\mathbf{p}\cdot\mathbf{q}}{|\mathbf{p}||\mathbf{q}|}<0$，则$\mathbf{p}\cdot\mathbf{q}<0$，此时插值会在4D球面上绕远路，此时可以将任一向量取反（不改变它代表的朝向）
->- 当$\theta$很小时，$\sin \theta\to0$，此时可以用简单的线性插值$\mathbf{r}(t)=(1-t)\mathbf{p}+t\mathbf{q}$，因为此时$\sin \theta\to\theta$
+>- when $\mathbf{p}$ and $\mathbf{q}$angle$\theta$ is greater than 90°，$\cos \theta=\frac{\mathbf{p}\cdot\mathbf{q}}{|\mathbf{p}||\mathbf{q}|}<0$，but$\mathbf{p}\cdot\mathbf{q}<0$, at this time the interpolation will go a long way on the 4D sphere. At this time, any vector can be inverted (without changing the orientation it represents)
+>- When $\theta$ is small，$\sin \theta\to0$，at this time, simple linear interpolation $\mathbf{r}(t)=(1-t)\mathbf{p}+t\mathbf{q}$ can be used, because at this time $\sin \theta\to\theta$
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/x-mathjax-config">

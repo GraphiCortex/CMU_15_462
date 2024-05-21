@@ -38,7 +38,7 @@ $$
 >
 > ![1544896370674](assets/1544896370674.jpg)
 >
->  推导如下：
+>  The derivation is as follows:
 > $$
 > \begin{aligned}
 > p(\theta,\phi)\ \text{d}\theta\text{d}\phi&=\frac{\text{d}\omega}{2\pi}=\frac{\sin\theta\ \text{d}\theta\text{d}\phi}{2\pi}\\
@@ -58,11 +58,11 @@ $$
 
 **Cosine-Weighted Hemisphere Sampling** 
 
-对于漫反射，BRDF为 $\frac{\rho}{\pi}​$，则所求积分为
+For diffuse reflection, the BRDF is $\frac{\rho}{\pi}​$, then the integral is
 $$
 \int_{\mathcal{H}^2} \frac{\rho}{\pi}L(\boldsymbol{p},\omega_i)\cos\theta\ \text{d}\omega_i
 $$
-因此我们可以让采样概率密度函数正比于 $\cos\theta​$。
+Therefore we can make the sampling probability density function proportional to $\cos\theta​$.
 $$
 \begin{aligned}
 p(\omega)&\propto\cos\theta\\
@@ -96,12 +96,11 @@ $$
   - Compute incident irradiance due to ray: $dE_i=L_i\cos\theta_i$ 
 
   - Accumulate $\frac{2\pi}{N}\ \text{d}E_i$ into estimator
-
 ![1544898869796](assets/1544898869796.jpg)
 
 Incident lighting estimator uses different random directions in each pixel. Some of those directions point towards the light, others do not. 
 
-> 软阴影是由面光源产生的
+> Soft shadows are produced by area lights
 
 **Reduce noise** 
 
@@ -130,7 +129,7 @@ $$
 ![1544900153356](assets/1544900153356.jpg)
 
 If no occlusion is present, all directions chosen in computing estimate “hit” the light source.
-(Choice of direction only matters if portion of light is occluded from surface point p, 即半影区域) 
+(Choice of direction only matters if portion of light is occluded from surface point p,i.e. penumbra area) 
 
 ![1544900216991](assets/1544900216991.jpg)
 

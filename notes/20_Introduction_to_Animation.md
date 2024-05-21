@@ -241,19 +241,11 @@ C(\Delta\theta)&=||J(\theta)\Delta\theta-\Delta\mathbf{x}||^2\\
 \end{align}
 $$
 
-> ~~因为这里的 cost function 只是近似~~
->
-> ~~所以我们在最小化时，只能在 $\Delta\theta$  较小时有良好的效果~~
->
-> ~~所以我们不会去直接求解~~ $\Delta\theta=J(\theta)^{-1}\Delta\mathbf{x}$
->
-> 主要的原因还是其不可逆
->
-> 由于是圆周运动，所以 $J(\theta_i)=\omega\times\mathbf{r}$ 
->
-> $\omega$ 是旋转轴，$\mathbf{r}$ 是关节点到末端点的向量
->
-> 特别要注意坐标系的转换，坐标系是基于节点的，在更换节点时要进行坐标系的变换
+> $\Delta\theta=J(\theta)^{-1}\Delta\mathbf{x}$
+> The main reason is that it is irreversible
+> Since it is a circular motion, $J(\theta_i)=\omega\times\mathbf{r}$
+> $\omega$ is the rotation axis, $\mathbf{r}$ is the vector from the joint point to the end point
+> Pay special attention to the transformation of the coordinate system. The coordinate system is based on nodes. When replacing nodes, the coordinate system must be transformed.
 
 with respect to $\theta​$ by gradient descent
 $$
@@ -262,7 +254,6 @@ $$
 **Skeletal Animation** 
 
 Often use “skeleton” to drive deformation(变形) of continuous surface 
-
 Infuence of each bone determined by, e.g., weighting function 
 
 ![1544950074655](assets/1544950074655.jpg)
@@ -277,9 +268,7 @@ Infuence of each bone determined by, e.g., weighting function
 **Blend Shapes** 
 
 Instead of skeleton, interpolate directly between surfaces 
-
 E.g., model a collection of facial expressions 
-
 ![1544950123669](assets/1544950123669.jpg)
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>

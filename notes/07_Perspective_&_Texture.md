@@ -14,7 +14,7 @@ important for dealing with fnite precision of depth buffer / limitations on stor
 
 foating point has more “resolution” near zero 
 
-> near/far越窄精度越高
+> The narrower the near/far, the higher the accuracy.
 
 **Matrix for Perspective Transform**
 $$
@@ -106,25 +106,25 @@ P
 $$
 **Tri-linear filtering**
 
-在两个层级之间线性插值，层级内进行双线性插值，从而形成三线性插值
+Linear interpolation between two levels, bilinear interpolation within the level, resulting in trilinear interpolation
 
 ![1544530745171](assets/1544530745171.jpg)
 
 ![1544530772836](assets/1544530772836.jpg)
 
-> 这里有个关键的点没有提到，就是已知所要插值点的位置，如何选取周围的四个点。
+> There is a key point that is not mentioned here, which is how to select the four surrounding points when the location of the interpolation point is known.
 >
-> 看图就知道了，就看其落在所在像素的哪个角落
+> You can tell just by looking at the picture, just look at which corner of the pixel it falls on
 >
-> 左图中，插值点在像素中心的左上角，所以选择左上角的四个像素
+> In the picture on the left, the interpolation point is at the upper left corner of the pixel center, so select the four pixels in the upper left corner
 >
-> 右图中，插值点在像素中心的右下角，所以选择右下角的四个像素
+> In the picture on the right, the interpolation point is in the lower right corner of the pixel center, so select the four pixels in the lower right corner
 >
-> 总的规律就是，插值点在四个像素中心点的内部
+> The general rule is that the interpolation point is within the center points of the four pixels
 
 **anisotropic filter**
 
-上边是以正方形来采样，然而可能该像素代表的是一个长条，这样用正方形就过于模糊了
+The above image is sampled using a square. However, the pixel may represent a long strip, so using a square would be too blurry.
 
 ![1544530930695](assets/1544530930695.jpg)
 
@@ -138,11 +138,11 @@ $$
 
   - Constant fltering cost (independent of mip map level)
 
-    > 因为已经提前计算(pre-filter)好了
+    > Because it has been calculated in advance (pre-filter)
 
   - Constant number of texels accessed (independent of mip map level)
 
-    > 三线性插值采样8个像素
+    > Trilinear interpolation samples 8 pixels
 
 - Combat aliasing with prefltering, rather than supersampling
 

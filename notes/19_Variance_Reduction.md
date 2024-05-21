@@ -10,16 +10,16 @@ Naïve path tracing misses important phenomena!
 
 **Importance Sampling in Rendering** 
 
-以下是我们要求的积分公式
+The following is the integral formula we require
 $$
 L_o(\mathbf{p},\omega_o)=L_e(\mathbf{p},\omega_o) + \int_{\mathcal{H}^2}f_r(\mathbf{p},\omega_i\to\omega_o)L_i(\mathbf{p},\omega_i)\cos\theta \ \text{d}\omega_i
 $$
-考虑重要性采样，那么 $p(x)$ 应该接近 $f_r(\mathbf{p},\omega_i\to\omega_o)L_i(\mathbf{p},\omega_i)\cos\theta$，但我们并不知道这个函数的具体表达式，只能通过启发性的形式去寻找。
+Considering importance sampling, then $p(x)$ should be close to $f_r(\mathbf{p},\omega_i\to\omega_o)L_i(\mathbf{p},\omega_i)\cos\theta$, but we do not If you don’t know the specific expression of this function, you can only find it through heuristic forms.
 
-分别考虑乘积项
+Consider the product terms separately
 
-- $f_r(\mathbf{p},\omega_i\to\omega_o)$：我们可以根据BRDF来确定采样规律，如遇到镜面就往镜面反射方向采样
-- $L_i(\mathbf{p},\omega_i)$：我们可以根据光源来确定采样规律，如在光源方向采样
+- $f_r(\mathbf{p},\omega_i\to\omega_o)$: We can determine the sampling rule based on BRDF. If we encounter a mirror, we will sample in the direction of mirror reflection.
+- $L_i(\mathbf{p},\omega_i)$: We can determine the sampling rule according to the light source, such as sampling in the direction of the light source
 
 ![1544940446496](assets/1544940446496.jpg)
 
@@ -27,27 +27,22 @@ $$
 
 ![1545459463411](assets/1545459463411.jpg)
 
-之前提到可以根据光源方向来采样，这是直接光照。但要求与光源之间无阻隔。
-
-考虑上边这个场景，场景中大部分位置与光源之间都存在阻隔，故简单的在光源方向采样也无济于事。
-
-因此考虑双向路径追踪。
-
+As mentioned before, sampling can be done based on the direction of the light source, which is direct lighting. But it requires no obstruction between it and the light source.
+Considering the scene above, there is an obstruction between most positions in the scene and the light source, so simply sampling in the direction of the light source will not help.
+Therefore consider bidirectional path tracing.
 Forward path tracing: no control over path length (hits light after n bounces, or gets terminated by Russian Roulette) 
-
 Idea: connect paths from light, eye (“bidirectional”) 
-
 ![1544940538425](assets/1544940538425.jpg)
 
 **Metropolis-Hastings Algorithm**
 
-之前提到了双向路径追踪算法，但问题是如何选择光源出发的路径。有时候，光源的大部分路径都是无效的。
+The two-way path tracing algorithm was mentioned before, but the problem is how to choose the path from the light source. Sometimes, most of the light's path is invalid.
 
 Good paths can be hard to find
 
 ![1544940588563](assets/1544940588563.jpg)
 
-> perturb 扰乱
+> perturb 
 
  Standard Monte Carlo: sum up independent samples 
 
@@ -62,7 +57,7 @@ If careful, sample distribution will be proportional to integrand
 - make sure mutations are “ergodic”  
 - need to take a long walk, so initial point doesn’t matter (“mixing”) 
 
-> 关于Metropolis-Hastings Algorithm的更详细内容，可以参考 [wikipedia_MHA](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm) 
+> For more details about Metropolis-Hastings Algorithm, please refer to [wikipedia_MHA](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm) 
 
 **Metropolis-Hastings: Sampling an Image**
 
@@ -91,17 +86,17 @@ Balance heuristic is (provably!) about as good as anything
 
 ![1544941726743](assets/1544941726743.jpg)
 
-> $Nc_k$ 即为 策略k 的样本数
+> $Nc_k$ That is the number of samples of strategy k
 
 ![1544941743354](assets/1544941743354.jpg)
 
-> 左图是依据BSDF来采样
+> The picture on the left is sampled based on BSDF
 >
-> 右图是依据直接光来采样
+> The image on the right is sampled based on direct light
 >
-> 中间的图是两者的结合
+> The middle picture is a combination of the two
 >
-> 特别要注意分母的计算，**每个样本都需要计算一次分母** 
+> Pay special attention to the calculation of the denominator. **The denominator needs to be calculated once for each sample** 
 
 ## 19.2 Sampling Patterns
 
@@ -127,7 +122,7 @@ stratifed estimate never has larger variance (often lower)
 
 Number of samples should be proportional to area
 
-Discrepancy measures deviation(偏差) from this ideal 
+Discrepancy measures deviation from this ideal 
 
 ![1544942252426](assets/1544942252426.jpg)
 
@@ -176,11 +171,11 @@ Can adjust cell size to sample a given density (e.g., importance)
 
 cost is $O(n\log n)$
 
-> 不理解
+> Don't understand
 >
-> 用二分查找法的话只需$O(\log n)$
+> Using the binary search method only costs $O(\log n)$
 >
-> 建表只需$O(n)$
+> It only takes $O(n)$ to create a table
 
 **Alias Table** 
 
@@ -192,12 +187,11 @@ Basic idea: rob from the rich, give to the poor (**O(n)**):
 
 Table just stores **two identities** & **ratio of heights** per column 
 
-> 构建方法
+> Build method
 >
-> 1. n个事件则有n个column，分成有空的和溢出的两类
-> 2. 对于每个溢出的，找一个有空的，**空多少就从溢出处搬多少过去**，之后溢出处可能溢出，有空或刚满
-> 3. 重复步骤2即可
-
+> 1. For n events, there are n columns, which are divided into two categories: empty and overflow.
+> 2. For each overflow, find an empty one, and move as much as it is empty from the overflow place. After that, the overflow place may overflow, and it may be empty or just full.
+> 3. Repeat step 2
 To sample: 
 
 - pick uniform # between 1 and n
